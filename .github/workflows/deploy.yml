@@ -46,7 +46,7 @@ jobs:
         pip install -r requirements.txt
     - name: Generate Pelican Static Files
       run: |
-         . venv/bin/activate
+        . venv/bin/activate
         make html
     - name: Push to Github IO
       run: make publish
