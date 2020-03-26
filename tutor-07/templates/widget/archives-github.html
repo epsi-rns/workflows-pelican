@@ -1,0 +1,20 @@
+{% extends "template/widget.html" %}
+
+{% set widget_color = "orange" %}
+
+{% block widget_header %}
+  <strong>BSD/Linux Customization</strong>
+  <span class="fas fa-fingerprint is-pulled-right"></span>
+{% endblock %}
+
+{% block widget_body %}
+  {% if ARCHIVES_GITHUB %}
+    {% set posts = ARCHIVES_GITHUB | shuffle %}
+    <ul class="widget-list">
+    {% for title, url in posts[:5] %}
+      <li><a href="https://epsi-rns.github.io{{ url }}"
+            >{{ title }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

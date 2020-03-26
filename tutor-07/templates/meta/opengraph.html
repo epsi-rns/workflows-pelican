@@ -1,0 +1,36 @@
+{#
+
+Source:
+https://github.com/mmistakes/so-simple-theme/blob/master/_includes/open-graph.html
+
+A liquid tuple would be nice,
+but liquid is only a template after all.
+
+#}
+
+  {%- set ogtype = "article" if article else "website" %}
+
+  {%- if article %}
+    {% set ogurl = SITEURL ~ "/" ~ article.url %}
+  {% elif page %}
+    {% set ogurl = SITEURL ~ "/" ~ page.url %}
+  {% else %}
+    {% set ogurl = "" %}
+  {% endif %}
+
+  {# Open Graph #}
+  <meta property="og:locale"       content="{{ OG_LOCALE }}">
+  <meta property="og:type"         content="{{ ogtype }}">
+  <meta property="og:title"        content="{{ ogtitle }}">
+  {% if description %}
+  <meta property="og:description"  content="{{ description }}">
+  {% endif %}
+  {% if ogurl %}
+  <meta property="og:url"          content="{{ ogurl }}">
+  {% endif %}
+  <meta property="og:site_name"    content="{{ SITENAME }}">
+  <meta property="og:image"        content="{{ ogimage }}">
+  <meta property="og:latitude"     content="-6.193665"/>
+  <meta property="og:longitude"    content="106.848558"/>
+  <meta property="og:locality"     content="Jakarta"/>
+  <meta property="og:country-name" content="Indonesia"/>

@@ -1,0 +1,36 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block main %}
+  <main role="main" 
+        class="column is-two-thirds">
+
+    <section class="main-wrapper {{ color_main }}">
+      <div class="blog white z-depth-3 hoverable">
+
+        <section class="blog-header {{ color_main }} lighten-5">
+          {% block blog_header %}{% endblock %}
+        </section>
+
+        <article class="blog-body" itemprop="articleBody">
+          {% block blog_body %}{% endblock %}
+        </article>
+        
+        {% if blog_footer %}
+        <section class="blog-footer {{ color_main }} lighten-5">
+          {% block blog_footer %}{% endblock %}
+        </section>
+        {% endif %}
+
+      </div>
+    </section>
+
+  </main>
+{% endblock %}
+
+{% block aside %}
+  <aside class="column is-one-thirds">
+    {% block aside_content %}{% endblock %}
+  </aside>
+{% endblock %}

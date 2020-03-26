@@ -1,0 +1,9 @@
+{% extends "layouts/blog-list.html" %}
+
+{% set headtitle = "Tag | " ~ tag %}
+
+{% set color_main = 'orange' %}
+
+{% block content_title %}
+<h2 class="title is-4">Articles tagged with {{ tag }}</h2>
+{% endblock %}

@@ -1,0 +1,31 @@
+
+  {%- if article %}
+    {% set author = article.author | default(AUTHOR) %}
+  {% elif page %}
+    {% set author = page.author | default(AUTHOR) %}
+  {% else %}
+    {% set author = AUTHOR %}
+  {% endif %}
+
+  {%- if article %}
+    {% set tags  = article.tags %}
+    {% set cat   = article.category %}
+    {% if article.keywords %}
+      {% set words = article.keywords | split(', ') %}
+    {% else %}
+      {% set words = [] %}
+    {% endif %}
+    {% set terms = tags | keyjoin(cat, words) %}
+    {% set keywords = terms | join (", ") %}
+  {% endif %}
+
+  <meta name="author"
+        content="{{ author }}">
+  {% if description %}
+  <meta name="description"
+        content="{{ description }}">
+  {% endif %}
+  {% if keywords %}
+  <meta name="keywords"
+        content="{{ keywords }}">
+  {% endif %}

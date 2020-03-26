@@ -1,0 +1,59 @@
+{% extends "template/widget.html" %}
+
+{% set widget_color = "green" %}
+
+{% block widget_header %}
+  <strong>Archives</strong>
+  <span class="fa fa-archive is-pulled-right"></span>
+{% endblock %}
+
+{% block widget_body %}
+  {% set pg_year  = article.date.strftime('%Y') %}
+  {% set pg_month = article.date.strftime('%m') %}
+  {% set path     = 'archives' %}
+
+  {% for group_year in dates 
+       | groupby('date.year') 
+       | sort(reverse=True) %}
+
+    {% set name_y = group_year.grouper | string %}
+
+    <div class ="archive-year" id="{{ name_y }}">
+      <a href="{{ SITEURL }}/{{ path }}/{{ name_y }}">
+      {{ name_y }}</a>
+    </div>
+
+    {% if pg_year == name_y %}
+    <ul class="widget-archive">
+      {% for group_month in group_year.list
+        | groupby('date.month') 
+        | sort(reverse=True) %}
+      <li class="list-month">
+
+        {% set post = group_month.list | first %}
+        {% set name_m = group_month.grouper %}
+        {% set name_0m = post.date.strftime('%m') %}
+
+        <span class ="archive-month">
+          <a href="{{ SITEURL }}/{{ path }}/{{ name_y }}/{{ name_0m }}">
+            {{ post.date.strftime('%B %Y') }}
+        </a></span>
+
+        {% if pg_month == name_0m %}
+        <ul class="widget-list">
+          {% for post in group_month.list %}
+          <li>    
+            <a href="{{ SITEURL }}/{{ post.url }}"
+              >{{ post.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

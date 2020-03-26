@@ -1,0 +1,19 @@
+{% extends "template/widget.html" %}
+
+{% set widget_color = "pink" %}
+
+{% block widget_header %}
+  <strong>Isle of Dotsites</strong>
+  <span class="fas fa-child is-pulled-right"></span>
+{% endblock %}
+
+{% block widget_body %}
+  {% if FRIENDS %}
+    {% set friends = FRIENDS | shuffle %}
+    <ul class="widget-list">
+    {% for title, url in friends[:5] %}
+      <li><a href="{{ url }}">{{ title }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

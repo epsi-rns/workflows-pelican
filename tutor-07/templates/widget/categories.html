@@ -1,0 +1,18 @@
+{% extends "template/widget.html" %}
+
+{% set widget_color = "cyan" %}
+
+{% block widget_header %}
+  <strong>Categories</strong>
+  <span class="fa fa-folder is-pulled-right"></span>
+{% endblock %}
+
+{% block widget_body %}
+  {% for category, articles in tags | sort %}
+    <a class="tag is-small is-light
+              {{ widget_color }} z-depth-1 hoverable p-b-5"
+       href="{{ SITEURL }}/category/{{ category }}">
+      <span class="fa fa-folder"></span>&nbsp;{{ category }}
+    </a>&nbsp;
+  {% endfor %} 
+{% endblock %}

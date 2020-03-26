@@ -1,0 +1,23 @@
+{#
+http://www.zachstronaut.com/posts/2009/01/20/php-relative-date-time-string.html
+
+https://timeago.org/
+That way the time ago is updated dynamically as time passes,
+as opposed to having to rebuild Pelican every day.
+#}
+
+    <time datetime="{{ article.date.isoformat() }}" 
+          itemprop="datePublished">
+    <span class="timeago"
+          datetime="{{ article.date.strftime("%Y-%m-%d %X") }}">
+    </span></time>
+    &nbsp; 
+
+    <script src="{{ SITEURL }}/theme/js/timeago.min.js"></script>
+    <script type="text/javascript">
+      var timeagoInstance = timeago();
+      var nodes = document.querySelectorAll('.timeago');
+      timeagoInstance.render(nodes, 'en_US');
+      timeago.cancel();
+      timeago.cancel(nodes[0]);
+    </script>

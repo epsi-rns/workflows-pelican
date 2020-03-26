@@ -1,0 +1,10 @@
+{% extends "layouts/blog-list.html" %}
+
+{% set headtitle = "Category | " ~ category %}
+
+{% set color_main = 'orange' %}
+
+{% block content_title %}
+<h2 class="title is-4">Articles in the {{ category }} category</h2>
+{% endblock %}
+

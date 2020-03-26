@@ -1,0 +1,18 @@
+{% extends "template/widget.html" %}
+
+{% set widget_color = "light-blue" %}
+
+{% block widget_header %}
+  <strong>Tags</strong>
+  <span class="fa fa-tag is-pulled-right"></span>
+{% endblock %}
+
+{% block widget_body %}
+  {% for tag, articles in tags | sort %}
+    <a class="tag is-small is-light
+              {{ widget_color }} z-depth-1 hoverable p-b-5"
+       href="{{ SITEURL }}/tag/{{ tag }}">
+      <span class="fa fa-tag"></span>&nbsp;{{ tag }}
+    </a>&nbsp;
+  {% endfor %} 
+{% endblock %}

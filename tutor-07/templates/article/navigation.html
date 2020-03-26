@@ -1,0 +1,21 @@
+<nav class="pagination is-centered" 
+     role="navigation" aria-label="pagination">
+  {% set nav = dates | navigation(article) %}
+
+  {# Previous Article. #}
+  {% if nav.has_prev %}
+    <a class="pagination-previous post-previous"
+       href="{{ SITEURL }}/{{ nav.prev_url }}"
+       title="{{ nav.prev_title }}">
+      <span class="fas fa-chevron-left"></span>&nbsp;&nbsp;</a>
+  {% endif %}
+
+  {# Next Article. #}
+  {% if nav.has_next %}
+    <a class="pagination-next post-next"
+       href="{{ SITEURL }}/{{ nav.next_url }}" 
+       title="{{ nav.next_title }}">&nbsp;&nbsp;
+      <span class="fas fa-chevron-right"></span></a>
+  {% endif %}
+</nav>
+

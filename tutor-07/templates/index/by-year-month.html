@@ -1,0 +1,66 @@
+
+  <div id="archive">
+  {% for group_year in dates 
+       | groupby('date.year') 
+       | sort(reverse=True) %}
+
+    {% set year = group_year.grouper %}
+    {% if CURRENTYEAR == year %}
+      {% set year = "This year's posts (" ~ year ~ ")" %}
+    {% endif %}
+
+    <div class ="anchor-target archive-year" 
+         id="{{ group_year.grouper }}">{{ year }}
+    </div>
+
+    <div class="archive-month white p-y-5">
+
+      <div class="columns is-multiline p-y-5">
+      {% for group_month in group_year.list 
+        | groupby('date.month') 
+        | sort(reverse=True) %}
+
+        <section class="column is-full-mobile
+                    is-half-tablet is-one-third-widescreen">
+
+          <div class="widget white z-depth-1 hoverable m-b-10">
+            <div class="widget-header {{ color_main }} lighten-4">
+
+              <div class ="anchor-target archive-month" 
+                   id="{{ group_year.grouper }}-{{ group_month.grouper }}"
+                >{{ group_month.list[0].date.strftime("%B - %Y") }}
+              </div>
+
+            </div>
+            <div class="widget-body">
+
+              <div class="archive-list p-y-5">
+              {% for article in group_month.list %}
+                <div class="archive-item">
+                  <div class="is-pulled-left">
+                    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" 
+                       title="Permalink to {{ article.title|striptags }}"
+                      >{{ article.title }}
+                  </a></div>
+                  <div class="is-pulled-right has-text-right">
+                  <time>
+                      {{ article.date.strftime("%d %b") }}&nbsp;
+                      <span class="fa fa-calendar"></span>
+                  </time></div>
+                  <div class="is-clearfix"></div>
+                </div>
+              {% endfor %}
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      {% endfor %}
+      </div>
+
+    </div>
+
+  {% endfor %}
+  </div>

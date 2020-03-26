@@ -1,0 +1,9 @@
+{% extends "layouts/blog-list.html" %}
+
+{% set headtitle = "Author | " ~ author %}
+
+{% set color_main = 'orange' %}
+
+{% block content_title %}
+<h2 class="title is-4">Articles by {{ author }}</h2>
+{% endblock %}

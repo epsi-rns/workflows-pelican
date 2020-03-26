@@ -1,0 +1,35 @@
+{% extends "layouts/columns-double.html" %}
+
+{% set headtitle = article.title %}
+
+{% set color_main  = 'blue' %}
+{% set color_aside = 'teal' %}
+{% set blog_footer = True %}
+
+{% block blog_header %}
+  {% include 'article/blog-header.html' %}
+{% endblock %}
+
+{% block blog_body %}
+  {% if article.toc %}
+    {% include article.toc %}
+  {% endif %}
+
+  {#
+  {% include 'service/google-adsense.html' %}
+  <br/>
+  #}
+
+  {{ article.content }}
+  
+  <br/>
+  {% include 'article/navigation.html' %}
+{% endblock %}
+
+{% block blog_footer %}
+  {% include 'article/blog-footer.html' %}
+{% endblock %}
+
+{% block aside_content %}
+  {% include 'article/aside-content.html' %}
+{% endblock %}

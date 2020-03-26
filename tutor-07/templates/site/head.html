@@ -1,0 +1,57 @@
+  {% include 'meta/html.html' %}
+  
+  {% if not headtitle %}{% set headtitle = SITENAME %}{% endif %}
+  <title>{{ headtitle }}</title>
+
+  <link rel="stylesheet" type="text/css"
+        href="{{ SITEURL }}/theme/css/bulma.css">
+  <link rel="stylesheet" type="text/css"
+        href="{{ SITEURL }}/theme/css/helper.css">
+  <link rel="stylesheet" type="text/css"
+        href="{{ SITEURL }}/theme/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css"
+        href="{{ SITEURL }}/theme/css/main.css">
+
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon"
+        href="{{ SITEURL }}/theme/favicon.ico"/>
+  <link rel="alternate" type="application/rss"
+        href="{{ SITEURL }}/feed.xml"
+        title="Yet Another Personal Project" />
+
+  {%- if article %}
+    {% set ogtitle = article.title | default(SITENAME) %}
+  {% elif page %}
+    {% set ogtitle = page.title | default(SITENAME) %}
+  {% else %}
+    {% set ogtitle = SITENAME %}
+  {% endif %}
+
+  {%- if article %}
+    {% if article.excerpt %}
+      {% set description = article.excerpt %}
+    {% else %}
+      {% set description = article.summary | striptags %}
+    {% endif %}
+  {% elif page %}
+    {% set description = page.summary | striptags %}
+  {% else %}
+    {% set description = "Standard Site Structure" %}
+  {% endif %}
+  
+  {# fix #}
+  {% set description = description | truncate(150) %}
+
+  {%- if article %}
+    {% set ogi = article.opengraphimage | default(OG_LOGO) %}
+  {% elif page %}
+    {% set ogi = page.opengraphimage | default(OG_LOGO) %}
+  {% else %}
+    {% set ogi = OG_LOGO %}
+  {% endif %}
+  
+  {# fix #}
+  {% set ogimage = SITEURL ~ ogi %}
+
+  {% include 'meta/seo.html' %}
+  {% include 'meta/opengraph.html' %}
+  {% include 'meta/twitter.html' %}

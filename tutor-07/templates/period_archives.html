@@ -1,0 +1,21 @@
+{% extends "layouts/columns-single.html" %}
+
+{% set periodtitle = period | reverse | join(' ') %}
+{% set headtitle = "Archives | " ~ periodtitle %}
+
+{% set color_main  = 'cyan' %}
+
+{% block blog_header %}
+  <div class="main_title"> 
+     <h2 class="title is-4" itemprop="name headline">
+       Archives for {{ periodtitle }}</h2>
+  </div>
+{% endblock %}
+
+{% block blog_body %}
+  {% if period[1] %}
+    {% include 'index/by-month.html' %}
+  {% else %}
+    {% include 'index/by-year.html' %}
+  {% endif %}
+{% endblock %}

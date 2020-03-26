@@ -1,0 +1,16 @@
+{% extends "layouts/columns-single.html" %}
+
+{% set headtitle = "Archives | " ~ SITENAME %}
+
+{% set color_main  = 'cyan' %}
+
+{% block blog_header %}
+  <div class="main_title"> 
+     <h2 class="title is-4" itemprop="name headline">
+       All Archives</h2>
+  </div>
+{% endblock %}
+
+{% block blog_body %}
+  {% include 'index/by-year-month.html' %}
+{% endblock %}

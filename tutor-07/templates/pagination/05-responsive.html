@@ -1,0 +1,207 @@
+{% if articles_page %}
+<nav class="pagination is-small is-centered" 
+     role="navigation" aria-label="pagination">
+  {% set total_pages  = articles_paginator.num_pages %}  
+  
+  {% if total_pages > 1 %}
+    {# 
+    * Pagination links 
+    * https://glennmccomb.com/articles/how-to-build-custom-hugo-pagination/
+    * Adjacent: Number of links either side of the current page
+    #}
+
+    {% set path = SITEURL ~ '/' ~ page_name %}
+    {% set current = articles_page.number %}
+
+    {% set link_offset  = 2 %}
+    {% set link_max     = (link_offset * 2) + 1 %}
+
+    {% set limit_lower  = 1 + link_offset %}
+    {% set limit_upper  = total_pages - link_offset %}
+
+    {% set min_lower    = link_max %}  
+    {% set max_upper    = total_pages - link_max %}
+    
+    {% set lower_offset = current - link_offset %}  
+    {% set upper_offset = current + link_offset %} 
+
+    {% set lower_indicator = 2 %}
+    {% set upper_indicator = total_pages - 1 %}
+
+    <ul class="pagination-list">
+
+      {# First Page. #}
+        <li class="icon-first">
+        {% if current > 1 %}
+          {% set p_first = path %}
+          <a class="pagination-previous hoverable"
+             href="{{ p_first }}"
+             rel="first">
+            <span class="fas fa-step-backward"></span>&nbsp;</a>
+        {% else %}
+          <a class="pagination-previous"
+             title="This is the first page"
+             disabled>
+            <span class="fas fa-step-backward"></span>&nbsp;</a>
+        {% endif %}
+        </li>
+
+      {# Previous Page. #}
+        <li class="icon-previous">
+        {% if articles_page.has_previous() %}
+          {% set num = articles_page.previous_page_number() %}
+          {% set p_prev = path ~ (num if num > 1 else '') %}
+          <a class="pagination-previous hoverable"
+             href="{{ p_prev }}" 
+             rel="prev">
+            <span class="fas fa-backward"></span>&nbsp;</a>
+        {% else %}
+          <a class="pagination-previous"
+             title="This is the first page"
+             disabled>
+            <span class="fas fa-backward"></span>&nbsp;</a>
+        {% endif %}
+        </li>
+
+      {% if total_pages > link_max %}
+        {# First Page. #}
+        {% if lower_offset > 1 %}
+        {% set p_first = path %}
+        <li>
+          <a class="pagination-link hoverable"
+             href="{{ p_first }}"
+             aria-label="Goto page 1">1</a>
+        </li>
+        {% endif %}
+
+        {# Early (More Pages) Indicator. #}
+        {% if lower_offset > lower_indicator %}
+        <li>
+          <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        {% endif %}
+      {% endif %}
+
+      {# Page numbers. #}
+      {% for cursor in range( 1, 1 + total_pages ) %}    
+        {% set show_cursor_flag = false %}
+
+        {% if total_pages > link_max %}
+        {# Complex page numbers. #}
+
+          {# Lower limit pages. #}
+          {# If the user is on a page which is in the lower limit.  #}
+          {% if current <= limit_lower %}
+            {# If the current loop page is less than max_links. #}
+            {% if cursor <= min_lower %}
+              {% set show_cursor_flag = true %}
+            {% endif %}
+
+          {# Upper limit pages. #}
+          {# If the user is on a page which is in the upper limit. #}
+          {% elif current >= limit_upper %}
+            {# If the current loop page is greater than total pages minus $max_links #}
+            {% if cursor > max_upper %}
+              {% set show_cursor_flag = true %}
+            {% endif %}
+
+          {# Middle pages. #}
+          {% else %}
+          
+            {% if (cursor >= lower_offset) and (cursor <= upper_offset) %}
+              {% set show_cursor_flag = true %}
+            {% endif %}
+
+          {% endif %}
+
+        {% else %}
+        {# Simple page numbers. #}
+
+          {% set show_cursor_flag = true %}
+        {% endif %}
+        
+        {# Show Pager. #}
+        {% if show_cursor_flag == true %}
+        {% set diff_offset = (cursor - current) | abs %}
+        <li class="pagination--offset-{{ diff_offset }}">
+          {% if cursor == current %} 
+            <a class="pagination-link is-current {{ color_main }}"
+               aria-label="Page {{ cursor }}">
+              {{ cursor }}
+            </a>
+          {% else %}
+
+            {% if page == 1 %}
+              {% set p_link = path %}
+            {% else %}
+              {% set p_link = path ~ cursor %}
+            {% endif %}
+
+            <a class="pagination-link hoverable"
+               href="{{ p_link }}"
+               aria-label="Goto page {{ cursor }}">
+              {{ cursor }}
+            </a>
+          {% endif %}
+        </li>
+        {% endif %}
+
+      {% endfor %}
+
+      {% if total_pages > link_max %}
+        {# Late (More Pages) Indicator. #}
+        {% if upper_offset < upper_indicator %}
+        <li>
+          <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        {% endif %}
+
+        {# Last Page. #}
+        {% if upper_offset < total_pages %}
+        {% set p_last = path ~ total_pages %}
+        <li>
+          <a class="pagination-link hoverable" 
+             href="{{ p_last }}"
+             aria-label="Goto page {{ total_pages }}">
+            {{ total_pages }}</a>
+        </li>
+        {% endif %}
+      {% endif %}
+
+      {# Next Page. #}
+        <li class="icon-next">
+        {% if articles_page.has_next() %}
+          {% set num = articles_page.next_page_number() %}
+          {% set p_next = path ~ num %}
+          <a class="pagination-next hoverable"
+             href="{{ p_next }}"
+             rel="next">&nbsp;
+            <span class="fas fa-forward"></span></a>
+        {% else %}
+          <a class="pagination-next"
+             title="This is the last page"
+             disabled>&nbsp;
+            <span class="fas fa-forward"></span></a>
+        {% endif %}
+        </li>
+
+      <!-- Last Page. -->
+        <li class="icon-last">
+        {% if current != total_pages %}
+          {% set p_last = path ~ total_pages %}
+          <a class="pagination-next hoverable"
+             href="{{ p_last }}"
+             rel="last">&nbsp;
+            <span class="fas fa-step-forward"></span></a>
+        {% else %}
+          <a class="pagination-next"
+             title="This is the last page"
+             disabled>&nbsp;
+            <span class="fas fa-step-forward"></span></a>
+        {% endif %}
+        </li>
+
+    </ul>
+  {% endif %}
+</nav>
+{% endif %}

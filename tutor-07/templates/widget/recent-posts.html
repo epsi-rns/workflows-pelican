@@ -1,0 +1,19 @@
+{% extends "template/widget.html" %}
+
+{% set widget_color = "red" %}
+
+{% block widget_header %}
+  <strong>Recent Posts</strong>
+  <span class="fa fa-newspaper is-pulled-right"></span>
+{% endblock %}
+
+{% block widget_body %}
+  <ul class="widget-list">
+    {% for article in articles[:5] %}
+      <li><a href="{{ SITEURL }}/{{ article.url }}"
+        >{{ article.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+

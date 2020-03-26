@@ -1,0 +1,18 @@
+{% extends "layouts/columns-double.html" %}
+
+{% set headtitle = page.title %}
+
+{% set color_main  = 'pink' %}
+{% set color_aside = 'green' %}
+
+{% block blog_header %}
+  {% include 'page/blog-header.html' %}
+{% endblock %}
+
+{% block blog_body %}
+  {{ page.content }}
+{% endblock %}
+
+{% block aside_content %}
+  {% include 'page/aside-content.html' %}
+{% endblock %}

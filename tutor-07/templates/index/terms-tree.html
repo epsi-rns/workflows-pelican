@@ -1,0 +1,41 @@
+
+<section class="columns is-multiline p-y-5" id="archive">
+  {% for term, articles in terms | sort %}
+  <div class="column is-full-mobile
+              is-half-tablet is-one-third-widescreen">
+
+    <div class="widget white z-depth-1 hoverable m-b-10">
+      <div class="widget-header {{ color_main }} lighten-4">
+
+        <div id="{{ term }}" class ="anchor-target">
+          <span class="fa fa-tag"></span>&nbsp; 
+          {{ term }}
+        </div>
+
+      </div>
+      <div class="widget-body">
+
+        <div class="archive-list p-y-5">
+        {% for article in articles %}
+          <div class="archive-item meta-item">
+            <div class="meta_link has-text-right">
+              <time class="meta_time is-pulled-right"
+                    datetime="{{ article.date.isoformat() }}">
+                {{ article.date.strftime("%b %-d, %Y") }}&nbsp;
+                &nbsp;<span class="{{ icon }}"></span></time></div>
+            <div class="is-pulled-left">
+            <a href="{{ SITEURL }}/{{ article.url }}">
+              {{ article.title }}
+            </a></div>
+            <div class="is-clearfix"></div>
+          </div>
+        {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  {% endfor %}
+</section>

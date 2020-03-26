@@ -1,0 +1,6 @@
+# Blogroll: Articles from Pelican
+ARCHIVES_PELICAN = (
+{% for article in articles %}
+  ( {{ article.date.strftime('%y%m%d%M')}}, "{{ article.title }}", '{{ article.url }}' ),
+{% endfor %}
+)

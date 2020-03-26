@@ -1,0 +1,53 @@
+
+  <div class="main_title"> 
+    <h2 class="title is-4" itemprop="name headline">
+      <a href="{{ SITEURL }}/{{ article.url }}"
+       >{{ article.title }}</a></h2>
+  </div>
+
+  <div class="field p-t-5">
+    {% if article.author %}
+    <div class="is-pulled-left p-b-5">
+    <a href="{{ SITEURL }}/{{ article.author.url }}.html">
+      <span class="meta_author tag is-small is-dark
+                   indigo z-depth-1 hoverable">
+        <span class="fa fa-user"></span>
+        &nbsp;
+        <span itemprop="author"
+              itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ article.author }}</span></span>            
+      </span>
+    </a>
+    &nbsp;
+    </div>
+    {% endif %}
+
+    <div class="is-pulled-left p-b-5">
+      <span class="meta-time tag is-small is-dark
+                   green z-depth-1 hoverable">
+      {% include 'article/time-elapsed.html' %}
+      </span>
+      &nbsp;
+    </div>
+
+    <div class="is-pulled-right p-b-5">
+      {% for tag in article.tags %}
+        <a href="{{ SITEURL }}/tag/{{ tag }}.html">
+          <span class="tag is-dark is-small teal z-depth-1 hoverable">
+            <span class="fa fa-tag"></span>&nbsp;{{ tag }}</span></a>
+      {% endfor %}
+      &nbsp;
+    </div>
+
+    {% if article.category %}
+    <div class="is-pulled-right p-b-5">
+      <a href="{{ SITEURL }}/category/{{ article.category  }}.html">
+        <span class="tag is-light is-small teal z-depth-1 hoverable">
+          <span class="fa fa-folder"></span>
+          &nbsp;{{ article.category  }}</span></a>
+      &nbsp;
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="is-clearfix"></div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'site/head.html' %}
+</head>
+
+<body>
+  {# {% include 'service/google-analytics.html' %} #}
+
+  <!-- header -->
+  {% include 'site/header.html' %}
+
+  <!-- main -->
+  {% block content %}
+  <div class="columns is-8 layout-base maxwidth">
+    {% block main %}
+    {% endblock %}
+    
+    {% block aside %}
+    {% endblock %}
+  </div><!-- columns -->
+  {% endblock %}
+
+  {% if articles %}
+  <div class="white z-depth-3 hoverable maxwidth">
+    {% include 'service/disqus-comments.html' %}
+  </div>
+  {% endif %}
+  
+  <!-- footer -->
+  {% include 'site/footer.html' %}
+  {% include 'site/scripts.html' %}
+</body>
+
+</html>

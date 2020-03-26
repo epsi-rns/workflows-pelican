@@ -1,0 +1,17 @@
+
+  <div class="field is-grouped is-grouped-multiline">
+  {% for term, articles in terms | sort %}
+    <div class="tags has-addons">
+      <a href="{{ SITEURL }}/{{ term.url }}.html">
+        <div class="tag is-light {{ color_main }} lighten-2 z-depth-1"
+          >{{ term }} 
+        </div><div class="tag is-dark {{ color_main }} darken-2 z-depth-1"
+          >{{ articles | count }}
+        </div>
+      </a>
+    </div>
+    &nbsp;
+  {% endfor %}
+    <div class="tags dummy"></div>
+  </div>
+

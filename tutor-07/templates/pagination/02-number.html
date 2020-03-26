@@ -1,0 +1,89 @@
+{% if articles_page %}
+<nav class="pagination is-small is-centered" 
+     role="navigation" aria-label="pagination">
+  {% set total_pages = articles_paginator.num_pages %}  
+  
+  {% if total_pages > 1 %}
+    {% set current = articles_page.number %}
+    {% set path = SITEURL ~ '/' ~ page_name %}
+    
+    {# First Page. #}
+    {% if current > 1 %}
+      {% set p_first = path %}
+      <a class="pagination-previous hoverable"
+         href="{{ p_first }}"
+         rel="first">First</a>
+    {% else %}
+      <a class="pagination-previous"
+         title="This is the first page"
+         disabled>First</a>
+    {% endif %}
+
+    {# Previous Page. #}
+    {% if articles_page.has_previous() %}
+      {% set num = articles_page.previous_page_number() %}
+      {% set p_prev = path ~ (num if num > 1 else '') %}
+      <a class="pagination-previous hoverable"
+         href="{{ p_prev }}" 
+         rel="prev">Previous</a>
+    {% else %}
+      <a class="pagination-previous"
+         title="This is the first page"
+         disabled>Previous</a>
+    {% endif %}
+
+    {# Next Page. #}
+    {% if articles_page.has_next() %}
+      {% set num = articles_page.next_page_number() %}
+      {% set p_next = path ~ num %}
+      <a class="pagination-next hoverable"
+         href="{{ p_next }}"
+         rel="next">Next</a>
+    {% else %}
+      <a class="pagination-next"
+         title="This is the last page"
+         disabled>Next</a>
+    {% endif %}
+
+    {# Last Page. #}
+    {% if current < total_pages %}
+      {% set p_last = path ~ total_pages %}
+      <a class="pagination-next hoverable"
+         href="{{ p_last }}"
+         rel="last">Last</a>
+    {% else %}
+      <a class="pagination-next"
+         title="This is the last page"
+         disabled>Last</a>
+    {% endif %}
+
+    <ul class="pagination-list">
+    {# Page numbers. #}
+    {% for page in range( 1, 1 + total_pages ) %}
+      <li>
+      {% if page == current %}
+        <a class="pagination-link is-current {{ color_main }}" 
+           aria-label="Page {{ page }}">
+          {{ page }}
+        </a>
+      {% else %}
+
+        {% if page == 1 %}
+          {% set p_link = path %}
+        {% else %}
+          {% set p_link = path ~ page %}
+        {% endif %}
+
+        <a class="pagination-link hoverable"
+           href="{{ p_link }}"
+           aria-label="Goto page {{ page }}">
+          {{ page }}
+        </a>
+       {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+
+  {% endif %}
+</nav>
+{% endif %}

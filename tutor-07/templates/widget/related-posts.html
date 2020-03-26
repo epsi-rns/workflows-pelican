@@ -1,0 +1,30 @@
+{% if article.relatedlinkids %}
+{% if ARCHIVES_PELICAN %}
+
+  {% extends "template/widget.html" %}
+
+  {% set widget_color = "lime" %}
+
+  {% block widget_header %}
+  <strong>Related Posts</strong>
+  <span class="fa fa-link is-pulled-right"></span>
+  {% endblock %}
+
+  {% block widget_body %}
+  {% set ids = article.relatedlinkids | split(', ') %}
+  <ul class="widget-list">
+    {% for id_article in ids %}
+      {% for id_data, title, url in ARCHIVES_PELICAN %}
+        {% if (id_article | int) == (id_data | int) %}
+        <li><a href="{{ SITEURL }}/{{ url }}"
+          >{{ title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+  {% endblock %}
+
+{% endif %}
+{% endif %}
+
+
