@@ -1,0 +1,13 @@
+# Blogroll: Articles from Pelican
+ARCHIVES_PELICAN = (
+  ( 19011535, "Both Sides Now", '2019/01/15/joni-mitchell-both-sides-now/' ),
+  ( 18091335, "No Crying in Baseball", '2018/09/13/mothers-no-crying-in-baseball/' ),
+  ( 18090735, "Something", '2018/09/07/julian-baker-something/' ),
+  ( 18021535, "Slow Dancing in a Burning Room", '2018/02/15/john-mayer-slow-dancing-in-a-burning-room/' ),
+  ( 18011535, "So Far Away", '2018/01/15/avenged-sevenfold-so-far-away/' ),
+  ( 17031535, "Adam's Song", '2017/03/15/blink-182-adams-song/' ),
+  ( 15051535, "Gone Too Soon", '2015/05/15/michael-jackson-gone-too-soon/' ),
+  ( 15031535, "Angel", '2015/03/15/sarah-mclachlan-angel/' ),
+  ( 14032535, "One Step Up", '2014/03/25/bruce-springsteen-one-step-up/' ),
+  ( 14031535, "The River", '2014/03/15/bruce-springsteen-the-river/' ),
+)

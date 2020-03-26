@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+
+  <meta name="generator" content="Karimata 1.2.3 Media Engine" />
+
+  <meta name="theme-color" content="#2980b9">  
+  <title>Yet Another Static Blog</title>
+
+  <link rel="stylesheet" type="text/css"
+        href="/workflows-pelican/theme/css/bulma.css">
+  <link rel="stylesheet" type="text/css"
+        href="/workflows-pelican/theme/css/helper.css">
+  <link rel="stylesheet" type="text/css"
+        href="/workflows-pelican/theme/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css"
+        href="/workflows-pelican/theme/css/main.css">
+
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon"
+        href="/workflows-pelican/theme/favicon.ico"/>
+  <link rel="alternate" type="application/rss"
+        href="/workflows-pelican/feed.xml"
+        title="Yet Another Personal Project" />  
+  
+
+
+  <meta name="author"
+        content="epsi">
+  <meta name="description"
+        content="As always, should you be caught or killed, any knowledge of your actions will be disavowed.">
+
+  <meta property="og:locale"       content="en_US">
+  <meta property="og:type"         content="website">
+  <meta property="og:title"        content="Welcome">
+  <meta property="og:description"  content="As always, should you be caught or killed, any knowledge of your actions will be disavowed.">
+  <meta property="og:url"          content="/workflows-pelican/">
+  <meta property="og:site_name"    content="Yet Another Static Blog">
+  <meta property="og:image"        content="/workflows-pelican/assets/images/logo-gear-opengraph.png">
+  <meta property="og:latitude"     content="-6.193665"/>
+  <meta property="og:longitude"    content="106.848558"/>
+  <meta property="og:locality"     content="Jakarta"/>
+  <meta property="og:country-name" content="Indonesia"/>
+  <meta name="twitter:title"       content="Welcome">
+  <meta name="twitter:description" content="As always, should you be caught or killed, any knowledge of your actions will be disavowed.">
+  <meta name="twitter:creator"     content="@nurwijayadi">
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:image"       content="/workflows-pelican/assets/images/logo-gear-opengraph.png">
+</head>
+
+<body>
+
+  <!-- header -->
+
+  <nav role="navigation" aria-label="main navigation"
+       class="navbar is-fixed-top is-white maxwidth
+              white z-depth-3 hoverable"
+       id="navbar-vue-app">
+    <div class="navbar-brand">
+      <a class="navbar-item"
+         href="/workflows-pelican/">
+        <img src="/workflows-pelican/theme/images/logo-gear.png" 
+           alt="Home" />
+      </a>
+      <a class="navbar-item"
+         href="/workflows-pelican/blog/index.html">
+        Blog
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Archives
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item"
+             href="/workflows-pelican/tags.html">
+            <span class="fa fa-tags"></span>
+            &nbsp;By Tags
+          </a>
+          <a class="navbar-item"
+             href="/workflows-pelican/categories.html">
+            <span class="fa fa-folder"></span>
+            &nbsp;By Categories
+          </a>
+          <a class="navbar-item"
+             href="/workflows-pelican/authors.html">
+            <span class="fa fa-users"></span>
+            &nbsp;By Authors
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item"
+             href="/workflows-pelican/archives.html">
+            <span class="fa fa-calendar"></span>
+            &nbsp;Chronology
+          </a>
+        </div>
+      </div>
+
+      <a role="button" class="navbar-burger burger" 
+         aria-label="menu" aria-expanded="false" data-target="navbarBulma"
+         @click="isOpen = !isOpen" v-bind:class="{'is-active': isOpen}">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBulma" class="navbar-menu"
+         v-bind:class="{'is-active': isOpen}">
+      <div class="navbar-start">
+        <a class="navbar-item"
+           href="/workflows-pelican/pages/about.html">
+          About
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <form class="is-marginless" action="/pages/search/" method="get">
+        <div class="navbar-item">
+          <input class="" type="text" name="q"
+            placeholder="Search..." aria-label="Search">
+          &nbsp;
+          <button class="button is-light" 
+            type="submit">Search</button>
+        </div>
+        </form>
+      </div>
+
+    </div>
+  </nav>
+  <!-- main -->
+  <div class="columns is-8 layout-base maxwidth">
+  <main role="main" 
+        class="column is-full">
+
+    <section class="main-wrapper blue">
+      <div class="blog white z-depth-3 hoverable">
+
+        <section class="blog-header has-text-centered
+                        blue lighten-5">
+  <div class="main_title">
+    <h2 class="title is-4" itemprop="name headline">
+      Welcome</h2>
+  
+  </div>
+        </section>
+
+        <article class="blog-body has-text-centered"
+                 itemprop="articleBody">
+  <br/>
+
+  <h3 class="title is-5">Welcome to Pelican Demo!</h3>
+  <h4 class="title is-6">Pelican + Jinja2 + Bulma MD</h4>
+
+  <p>This demo contain seven chapters:</p>
+
+  <div>
+    [ <a href="https://gitlab.com/epsi-rns/tutor-pelican-bulma-md/tree/master/step-01">Tutor 01</a> ]
+    [ <a href="https://gitlab.com/epsi-rns/tutor-pelican-bulma-md/tree/master/step-02">Tutor 02</a> ]
+    [ <a href="https://gitlab.com/epsi-rns/tutor-pelican-bulma-md/tree/master/step-03">Tutor 03</a> ]
+  </div>
+  <div>
+    [ <a href="https://gitlab.com/epsi-rns/tutor-pelican-bulma-md/tree/master/step-04">Tutor 04</a> ]
+    [ <a href="https://gitlab.com/epsi-rns/tutor-pelican-bulma-md/tree/master/step-05">Tutor 05</a> ]
+    [ <a href="https://gitlab.com/epsi-rns/tutor-pelican-bulma-md/tree/master/step-06">Tutor 06</a> ]
+  </div>
+  <div>
+    [ <a href="https://gitlab.com/epsi-rns/tutor-pelican-bulma-md/tree/master/step-07">Tutor 07</a> ]
+  </div>
+
+  <p class="center-align">This site is intended as demo only.</p>
+
+  <p>
+    <a class="button is-dark
+    blue-grey darken-2 hoverable m-b-5"
+       href="/workflows-pelican/blog/index.html"
+      ><span class="is-hidden-mobile">
+      Articles Sorted&nbsp;</span>by Date</a>
+    <a class="button is-dark
+    blue-grey darken-1 hoverable m-b-5"
+       href="/workflows-pelican/tags.html"
+      ><span class="is-hidden-mobile">
+      Articles Sorted&nbsp;</span>by Tag</a>
+  </p>
+
+  <div class="justify-content-center">
+    <img src="/workflows-pelican/theme/images/cards/one-page.png" 
+         alt="business card">
+  </div>
+
+  <p>
+    <a class="button is-dark
+    blue-grey darken-2 hoverable m-b-5"
+       href="https://gitlab.com/epsi-rns/tutor-pelican-bulma/"
+      >Clone Pelican&nbsp;<span class="is-hidden-mobile">
+      Tutorial Repository</span></a>
+    <a class="button is-dark
+    blue-grey darken-1 hoverable m-b-5"
+       href="https://gitlab.com/epsi-rns/tutor-html-bulma-md/"
+      >Clone Bulma MD&nbsp;<span class="is-hidden-mobile">
+      Tutorial Repository</span></a>
+  </p>
+
+  <p>
+    <a class="button is-dark
+    blue-grey darken-2 hoverable m-b-5"
+       href="https://epsi-rns.github.io/"
+      >Web/Mobile&nbsp;<span class="is-hidden-mobile">
+      Development</span></a>
+    <a class="button is-dark
+    blue-grey darken-1 hoverable m-b-5"
+       href="https://epsi-rns.gitlab.io"
+      >BSD/Linux&nbsp;<span class="is-hidden-mobile">
+      Customization</span></a>
+  </p>
+
+  <p class="lead text-muted">
+    <span class="fas fa-home"></span>&nbsp;
+      Whitewood Street, Monday Market,
+      East Jakarta, 55112, Indonesia.
+  </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+    
+  </div><!-- columns -->
+
+  <div class="white z-depth-3 hoverable maxwidth">
+  </div>
+  
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="navbar is-fixed-bottom maxwidth
+          is-white has-text-centered is-vcentered
+          white z-depth-3 hoverable">
+      <div class="column">
+        &copy; 2020
+      </div>
+    </div>
+  </footer>
+  <script src="/workflows-pelican/theme/js/vue.min.js"></script>
+  <script src="/workflows-pelican/theme/js/bulma-burger-vue.js"></script>
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  // Autonumbering by mathjax
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script></body>
+
+</html>
