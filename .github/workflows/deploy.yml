@@ -1,0 +1,34 @@
+# https://jimkubicek.com/setting-up-github-actions-for-deploying-pelican.html
+
+name: Pelican Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout to master
+      uses: actions/checkout@v2
+    - name: Set up Python 3.5
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.5
+    - name: Upgrade PIP and Configure Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install invoke pelican[Markdown]
+    - name: Setup the SSH key
+      env:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      run: |
+        mkdir $HOME/.ssh
+        echo "$PRIVATE_KEY" >> $HOME/.ssh/id_rsa
+        chmod 400 $HOME/.ssh/id_rsa
+        ssh-keyscan -t rsa <SERVER_IP> >> $HOME/.ssh/known_hosts
+        cat $HOME/.ssh/known_hosts
+    - name: Push to Github IO
+      run: inv publish
