@@ -28,7 +28,7 @@ jobs:
     - name: Prepare Git Initialization
       run: |
         git config user.email "someone@somewhere"
-        git config user.name "someone""
+        git config user.name "someone"
         git remote -v
         echo "[Checking origin/gh-pages]"
         git branch -a -l | grep gh-pages | wc -l
