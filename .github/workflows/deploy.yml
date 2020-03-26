@@ -28,8 +28,18 @@ jobs:
     - name: Prepare Git Initialization
       run: |
         git config user.email "someone@somewhere"
-        git config user.name "someone"
-        pwd
+        git config user.name "someone""
+        git remote -v
+        echo "[Checking origin/gh-pages]"
+        git branch -a -l | grep gh-pages | wc -l
+        git branch -a -l | cat
+        if [ $(git branch -a -l | grep gh-pages | wc -l) -eq "0" ]; then
+          echo "[Create gh-pages for the first time]"
+          git checkout -b gh-pages
+          git commit --allow-empty -m "Create gh-pages for the first time"
+          git push --set-upstream origin gh-pages
+          git checkout master
+        fi
     - name: Upgrade PIP and Configure Dependencies
       run: |
         python3 -m venv venv
@@ -42,6 +52,7 @@ jobs:
         make html
     - name: Precheck Output 
       run: |
+        pwd
         source=$(pwd)
         git worktree add -B gh-pages ~/public origin/gh-pages
         git worktree list
