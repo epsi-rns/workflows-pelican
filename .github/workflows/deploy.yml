@@ -28,7 +28,7 @@ jobs:
     - name: Prepare Git Initialization
       run: |
         git config user.email "someone@somewhere"
-        git config user.name "someone
+        git config user.name "someone"
         pwd
     - name: Upgrade PIP and Configure Dependencies
       run: |
