@@ -65,6 +65,6 @@ jobs:
         cd ~/public
         git add --all
         git status
-        git commit --allow-empty -m "[skip ci] $(git log master -1 --pretty=%B)"
+        git commit --allow-empty -m "$(git log master -1 --pretty=%B)"
         git push --set-upstream origin gh-pages
         echo "[Deployed Successfully]"
