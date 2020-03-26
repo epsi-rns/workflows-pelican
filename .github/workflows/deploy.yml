@@ -31,6 +31,7 @@ jobs:
         git config user.name "someone"
         git remote -v
         echo "[Checking origin/gh-pages]"
+        git fetch
         git branch -a -l | grep gh-pages | wc -l
         git branch -a -l | cat
         if [ $(git branch -a -l | grep gh-pages | wc -l) -eq "0" ]; then
