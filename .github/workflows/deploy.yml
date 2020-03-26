@@ -25,19 +25,11 @@ jobs:
         echo "$PRIVATE_KEY" > $HOME/.ssh/id_rsa
         chmod 600 $HOME/.ssh/id_rsa
         ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts
-        cat $HOME/.ssh/known_hosts
     - name: Prepare Git Initialization
       run: |
         git config user.email "someone@somewhere"
-        git config user.name "someone"
-        git branch -a -l | cat
-        if [ $(git branch -a -l | grep gh-pages | wc -l) -eq "0" ]; then
-          echo "[Create gh-pages for the first time]"
-          git checkout -b gh-pages
-          git commit --allow-empty -m "Create gh-pages for the first time"
-          git push --set-upstream origin gh-pages
-          git checkout master
-        fi
+        git config user.name "someone
+        pwd
     - name: Upgrade PIP and Configure Dependencies
       run: |
         python3 -m venv venv
@@ -48,6 +40,17 @@ jobs:
       run: |
         . venv/bin/activate
         make html
+    - name: Precheck Output 
+      run: |
+        source=$(pwd)
+        git worktree add -B gh-pages ~/public origin/gh-pages
+        git worktree list
+        cd ~/public
+        ls -lah
+        find . -maxdepth 1 ! -name '.git' -exec rm -rf {} \;
+        mv ${myplace}/output/* .
+        touch .nojekyll
+        ls -lah
     - name: Deploy Release to GitHub
       run: |
         . venv/bin/activate
