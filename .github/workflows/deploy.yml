@@ -26,9 +26,9 @@ jobs:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       run: |
         mkdir $HOME/.ssh
-        echo "$PRIVATE_KEY" >> $HOME/.ssh/id_rsa
-        chmod 400 $HOME/.ssh/id_rsa
-        ssh-keyscan -t rsa <SERVER_IP> >> $HOME/.ssh/known_hosts
+        echo "$PRIVATE_KEY" > $HOME/.ssh/id_rsa
+        chmod 600 $HOME/.ssh/id_rsa
+        ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts
         cat $HOME/.ssh/known_hosts
     - name: Push to Github IO
       run: inv publish
