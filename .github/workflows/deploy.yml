@@ -48,5 +48,7 @@ jobs:
       run: |
         . venv/bin/activate
         make html
-    - name: Push to Github IO
-      run: make publish
+    - name: Deploy Release to GitHub
+      run: |
+        . venv/bin/activate
+        make publish
